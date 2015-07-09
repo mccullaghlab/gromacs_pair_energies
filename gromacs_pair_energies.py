@@ -223,10 +223,12 @@ def centerOfMassWithWrap(sel,box):
 		for k in range(3):
 			temp = sel.coordinates()[i][k]-sel.coordinates()[0][k]
 			if temp < (-box[k]/2.0):
-				temp += box[k]
+				temp2 = sel.coordinates()[i][k]+box[k]
 			elif temp > (box[k]/2.0):
-				temp -= box[k]
-			com[k]+= sel.masses()[i]*temp
+				temp2 = sel.coordinates()[i][k]-box[k]
+			else:
+				temp2 = sel.coordinates()[i][k]
+			com[k]+= sel.masses()[i]*temp2
 		total_mass += sel.masses()[i]
 
 	com /= total_mass
@@ -291,5 +293,6 @@ for ts in coord.trajectory:
 
 	# print
 	out.write("%10.5f %10.5f %10.5f %10.5f %10.5f %10.5f %10.5f\n" % (cv_dist, pair_energies[0], pair_energies[1], pair_energies[2], pair_energies[3], pair_energies[4], pair_energies[5]))
+	out.flush()
 
 out.close
