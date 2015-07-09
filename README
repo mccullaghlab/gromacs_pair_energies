@@ -1,11 +1,25 @@
 Gromacs Pair Energy Script
 
-USAGE:
+USAGE: gromacs_pair_energies.py [config file]
 
 
 CONFIG FILE:
+	outFile = [output file name in which energy data will be printed]
+	topFile = [input gromacs topology file from which atom type and charges will be read]
+	parmFile = [parameter file containing LJ parameters]
+	groFile = [INPUT gro/psf/pdb file in order to read trajectory]
+	trajFile = [INPUT trajectory file]
+	head_1 = [atom selection for head group 1]
+	tail_1 = [atom selection for tail group 1]
+	head_2 = [atom selection for head group 2]
+	tail_2 = [atom selection for tail group 2]
+	
+
+REQUIRED FILES:
 
 
 DEPENDENCIES:
-
+	numpy
+	MDAnalysis
+	
 
